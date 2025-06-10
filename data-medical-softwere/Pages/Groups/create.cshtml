@@ -1,0 +1,15 @@
+﻿@page
+@model data_medical_softwere.Pages.Groups.createModel
+@{
+     ViewData["Title"] = "Create Group";
+}
+<h2>Create Group</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Group.Name"></label>
+        <input asp-for="Group.Name" class="form-control" />
+        <span asp-validation-for="Group.Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

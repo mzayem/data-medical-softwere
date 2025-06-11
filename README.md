@@ -130,4 +130,4 @@ Pull requests are welcome. For major changes, please open an issue first.
 
 ## 📄 License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/mzayem/data-medical-softwere/blob/master/LICENSE)

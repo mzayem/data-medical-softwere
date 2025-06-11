@@ -1,28 +1,26 @@
 ﻿@page
-@model data_medical_softwere.Pages.Groups.IndexModel
+@model data_medical_softwere.Pages.Divisions.IndexModel
 @{
-    ViewData["Title"] = "Groups List";
+    ViewData["Title"] = "Divisions List";
 }
 
-<h2>Groups</h2>
+<h2>Divisions</h2>
 
-<a class="btn btn-primary mb-3" asp-page="/Groups/Create">Create New Group</a>
+<a class="btn btn-primary mb-3" asp-page="/Groups/Create">Create New Divisions</a>
 
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Vendor</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var group in Model.Groups)
+        @foreach (var group in Model.Divisions)
         {
             <tr>
                 <td>@group.Id</td>
                 <td>@group.Name</td>
-                <td>@group.Vendor?.Name</td>
             </tr>
         }
     </tbody>

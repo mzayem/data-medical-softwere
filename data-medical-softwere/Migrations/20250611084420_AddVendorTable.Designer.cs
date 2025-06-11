@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using data_medical_softwere.Modals;
 
@@ -11,9 +12,11 @@ using data_medical_softwere.Modals;
 namespace data_medical_softwere.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250611084420_AddVendorTable")]
+    partial class AddVendorTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,23 +24,6 @@ namespace data_medical_softwere.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("data_medical_softwere.Modals.Division", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Divisions");
-                });
 
             modelBuilder.Entity("data_medical_softwere.Modals.Group", b =>
                 {
@@ -48,15 +34,9 @@ namespace data_medical_softwere.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VendorId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("VendorId");
 
                     b.ToTable("Groups");
                 });
@@ -76,9 +56,6 @@ namespace data_medical_softwere.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DivisionId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -93,36 +70,7 @@ namespace data_medical_softwere.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DivisionId");
-
                     b.ToTable("Vendors");
-                });
-
-            modelBuilder.Entity("data_medical_softwere.Modals.Group", b =>
-                {
-                    b.HasOne("data_medical_softwere.Modals.Vendor", "Vendor")
-                        .WithMany("Groups")
-                        .HasForeignKey("VendorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Vendor");
-                });
-
-            modelBuilder.Entity("data_medical_softwere.Modals.Vendor", b =>
-                {
-                    b.HasOne("data_medical_softwere.Modals.Division", "Division")
-                        .WithMany()
-                        .HasForeignKey("DivisionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Division");
-                });
-
-            modelBuilder.Entity("data_medical_softwere.Modals.Vendor", b =>
-                {
-                    b.Navigation("Groups");
                 });
 #pragma warning restore 612, 618
         }

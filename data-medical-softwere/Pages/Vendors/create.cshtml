@@ -1,0 +1,43 @@
+﻿@page "{id?}"
+@model data_medical_softwere.Pages.Vendors.CreateModel
+@{
+    bool isEdit = Model.Vendor.Id > 0;
+    ViewData["Title"] = isEdit ? "Update Vendor" : "Create Vendor";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <!-- Hidden ID field to track updates -->
+    <input type="hidden" asp-for="Vendor.Id" />
+
+    <div class="form-group">
+        <label asp-for="Vendor.Name"></label>
+        <input asp-for="Vendor.Name" class="form-control" />
+        <span asp-validation-for="Vendor.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Vendor.NtnNumber"></label>
+        <input asp-for="Vendor.NtnNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Vendor.Address"></label>
+        <input asp-for="Vendor.Address" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Vendor.Phone"></label>
+        <input asp-for="Vendor.Phone" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Vendor.DivisionId"></label>
+        <select asp-for="Vendor.DivisionId" class="form-control" asp-items="Model.DivisionList">
+            <option value="">Select Division</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">@ViewData["Title"]</button>
+</form>

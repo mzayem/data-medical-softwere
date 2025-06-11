@@ -10,5 +10,7 @@ namespace data_medical_softwere.Modals
         }
 
         public DbSet<Group> Groups { get; set; }
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<Division> Divisions { get; set; }
     }
 }

@@ -12,3 +12,6 @@ obj/
 # Others
 *.log
 *.tlog
+
+# Node.js dependencies
+node_modules/

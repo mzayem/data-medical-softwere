@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using data_medical_softwere.Modals; // Adjust this based on your actual namespace
 
-namespace data_medical_softwere.Pages.Groups
+namespace data_medical_softwere.Pages.Divisions
 {
     public class IndexModel : PageModel
     {
@@ -14,16 +14,15 @@ namespace data_medical_softwere.Pages.Groups
             _context = context;
         }
 
-        public List<Group> Groups { get; set; } = new();
+        public List<Division> Divisions { get; set; } = new();
 
         public async Task<IActionResult> OnGetAsync()
         {
-            Groups = await _context.Groups.ToListAsync();
-            Groups = _context.Groups.Include(g => g.Vendor).ToList();
+            Divisions = await _context.Divisions.ToListAsync();
 
-            if (Groups.Count == 0)
+            if (Divisions.Count == 0)
             {
-                return RedirectToPage("/Groups/Create");
+                return RedirectToPage("/Divisions/Create");
             }
 
             return Page();

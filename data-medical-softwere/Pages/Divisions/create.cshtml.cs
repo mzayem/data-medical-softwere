@@ -1,9 +1,8 @@
 ﻿using data_medical_softwere.Modals; // ✅ updated from YourApp.Models
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace data_medical_softwere.Pages.Groups
+namespace data_medical_softwere.Pages.Divisions
 {
     public class CreateModel : PageModel
     {
@@ -15,15 +14,10 @@ namespace data_medical_softwere.Pages.Groups
         }
 
         [BindProperty]
-        public Group Group { get; set; } = new Group();
-
-        public List<SelectListItem> VendorOptions { get; set; } = new();
+        public Division Division { get; set; } = new Division(); // ✅ prevents non-nullable warning
 
         public void OnGet()
         {
-            VendorOptions = _context.Vendors
-        .Select(v => new SelectListItem { Value = v.Id.ToString(), Text = v.Name })
-        .ToList();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -31,9 +25,9 @@ namespace data_medical_softwere.Pages.Groups
             if (!ModelState.IsValid)
                 return Page();
 
-            _context.Groups.Add(Group);
+            _context.Divisions.Add(Division);
             await _context.SaveChangesAsync();
-            return RedirectToPage("/Groups/Index");
+            return RedirectToPage("/Divisions/Index");
         }
     }
 }

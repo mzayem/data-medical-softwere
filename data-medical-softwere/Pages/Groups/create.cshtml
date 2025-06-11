@@ -9,6 +9,11 @@
     <div class="form-group">
         <label asp-for="Group.Name"></label>
         <input asp-for="Group.Name" class="form-control" />
+        <label asp-for="Group.VendorId"></label>
+        <select asp-for="Group.VendorId" class="form-control" asp-items="Model.VendorOptions">
+            <option value="">Select Vendor</option>
+        </select>
+        <span asp-validation-for="Group.VendorId" class="text-danger"></span>
         <span asp-validation-for="Group.Name" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>

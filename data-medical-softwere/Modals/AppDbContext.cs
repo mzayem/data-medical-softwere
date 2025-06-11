@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
-namespace YourApp.Models
+namespace data_medical_softwere.Modals
 {
     public class AppDbContext : DbContext
     {

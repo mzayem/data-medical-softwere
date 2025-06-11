@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-
-var data_medical_softwere.Modals;
+﻿using data_medical_softwere.Modals; // ✅ Correct namespace for your DbContext & Models
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +18,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    app.UseHsts(); // HTTP Strict Transport Security
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();

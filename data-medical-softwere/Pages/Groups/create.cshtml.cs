@@ -1,31 +1,33 @@
+﻿using data_medical_softwere.Modals; // ✅ updated from YourApp.Models
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.RegularExpressions;
-using YourApp.Models;
 
-public class CreateModel : PageModel
+namespace data_medical_softwere.Pages.Groups
 {
-    private readonly AppDbContext _context;
-
-    public CreateModel(AppDbContext context)
+    public class CreateModel : PageModel
     {
-        _context = context;
-    }
+        private readonly AppDbContext _context;
 
-    [BindProperty]
-    public Group Group { get; set; }
+        public CreateModel(AppDbContext context)
+        {
+            _context = context;
+        }
 
-    public void OnGet()
-    {
-    }
+        [BindProperty]
+        public Group Group { get; set; } = new Group(); // ✅ prevents non-nullable warning
 
-    public async Task<IActionResult> OnPostAsync()
-    {
-        if (!ModelState.IsValid)
-            return Page();
+        public void OnGet()
+        {
+        }
 
-        _context.Groups.Add(Group);
-        await _context.SaveChangesAsync();
-        return RedirectToPage("/Index");
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+                return Page();
+
+            _context.Groups.Add(Group);
+            await _context.SaveChangesAsync();
+            return RedirectToPage("/Groups/Index");
+        }
     }
 }
